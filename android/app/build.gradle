@@ -100,6 +100,9 @@ def enableHermes = project.ext.react.get("enableHermes", false);
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
+    lintOptions { 
+    checkReleaseBuilds false
+    }
 
     defaultConfig {
         applicationId "com.assesmentbyimdad.app"

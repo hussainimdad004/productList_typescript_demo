@@ -11,6 +11,7 @@ import { tabbedNavigation } from './navigation';
 registerScreens({ store, Provider });
 
 const app = () => {
+  console.disableYellowBox = true;
   Navigation.events().registerAppLaunchedListener(() => {
     Navigation.setDefaultOptions({
       topBar: { visible: true },

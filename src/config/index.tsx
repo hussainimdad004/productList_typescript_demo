@@ -24,7 +24,6 @@ export default class WebApi {
                 timeout: _TIME_OUT
             });
 
-            console.log("API call success GET", _url, "response: ", response)
             return response;
         } catch (error) {
             console.log("catch error on ", _url, " call fail", error)

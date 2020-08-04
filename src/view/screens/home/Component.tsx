@@ -52,7 +52,7 @@ class Home extends React.PureComponent<Product, State> {
   }
   getProductList = () => {
     new WebApi().getProductList().then(data => {
-      console.log('dataaaaaaAAAA', data)
+      // console.log('dataaaaaaAAAA', data)
       data.data.forEach((item: Product) => item.qty = 0)
       this.setState({
         _data: data.data,
@@ -60,12 +60,9 @@ class Home extends React.PureComponent<Product, State> {
       })
     })
       .catch((error) => {
-        console.log("catch error", error)
+        // console.log("catch error", error)
       })
 
-  }
-  clickCalled = () => {
-    console.log('Clicking default button')
   }
   removeItem = (_item: Product) => {
     this.setState({
@@ -436,20 +433,16 @@ class Home extends React.PureComponent<Product, State> {
     )
   }
   filterList = (name: string) => {
-    console.log('nameeee', name)
-    console.log('_data', this.state._data)
     let _name = name.toLowerCase()
 
     this.setState({
       local_data: this.state._data.filter((obj) => {
-        console.log('objjjjjj', obj)
         return obj.colour.toLowerCase() === _name
       })
     })
   }
 
   _renderCategoryData = ({ item, index }: { item: string; index: number; }) => {
-    console.log('&&&&PPPi am here : ', item)
 
     return (
       <TouchableOpacity
@@ -490,24 +483,23 @@ class Home extends React.PureComponent<Product, State> {
 
 
   render() {
-    console.log('iteeeee', this.state.local_data)
     return (
-      <View style={styles.container}>
-        <View style={{ flex: 1, marginHorizontal: scale(10), marginTop: verticalScale(60) }}>
-          {this.filterSection()}
-          <FlatList
-            data={this.state.local_data}
-            style={{ paddingVertical: 5 }}
-            extraData={this.state}
-            renderItem={this._renderRowItem}
-            keyExtractor={item => item.id.toString()}
-          />
-        </View>
-        {this.drawLine()}
+        <View style={styles.container}>
+          <View style={{ flex: 1, marginHorizontal: scale(10), marginTop: verticalScale(60) }}>
+            {this.filterSection()}
+            <FlatList
+              data={this.state.local_data}
+              style={{ paddingVertical: 5 }}
+              extraData={this.state}
+              renderItem={this._renderRowItem}
+              keyExtractor={item => item.id.toString()}
+            />
+          </View>
+          {this.drawLine()}
 
-        {this.createMainTotal("TOTAL", this.state.total_cart_amount)}
-        {this._modalView()}
-      </View>
+          {this.createMainTotal("TOTAL", this.state.total_cart_amount)}
+          {this._modalView()}
+        </View>
     );
   }
 }
