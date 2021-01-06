@@ -22,7 +22,7 @@
     "lint:fix": "cross-env-shell tslint --fix --project ./tsconfig.json"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "jest-fetch-mock": "^3.0.3",
     "react": "^16.9.0",
     "react-native": "^0.61.5",
